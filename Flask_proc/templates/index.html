@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="{{ url_for('user') }}" method="post">
+    사용할 아이디를 입력해주세요 (영문으로만):<br> 
+    <input type="text" name="username", pattern="[A-Za-z]+", 
+      title="영문으로만 입력해주세요", required>
+    <input type="submit">
+  </form>
+  (공백없이 입력해주세요)
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <h1>구구단을 외자</h1>
+  <form action="{{url_for('multiple')}}", method="post">
+    출력하고싶은 구구단을 입력하세요 <br>
+    <input type="text", name ='num' , title='1부터 9까지 정수를 입력해주세요',
+    pattern='[1-9]', maxlength="1",  required="숫자를 입력하고 제출해주세요">
+    <input type="submit">
+  </form>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <h1>구구단을 외자 // get방식 </h1>
+  <form action="{{url_for('multiple')}}", method="get">
+    출력하고싶은 구구단을 입력하세요 <br>
+    <input type="text", name ='num' , title='1부터 9까지 정수를 입력해주세요',
+    pattern='[1-9]+', maxlength="1",  required="숫자를 입력하고 제출해주세요">
+    <input type="submit">
+  </form>
+
+
+</body>
+</html>
