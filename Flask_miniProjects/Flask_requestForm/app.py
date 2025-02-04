@@ -20,45 +20,54 @@ def contact_save():
   description = request.form.get('description','')
   username = request.form.get('username', '')
   email = request.form.get('email','')
-  session['description'] = description #세션에 description 저장
-  session['username'] = username
-  session['email'] = email
 
-  #사용자의 입력 체크
+  #세션에 저장
+  session['description'] = description 
+  session['username'] = username 
+  session['email'] = email 
+
+  #사용자의 입력 유효성 체크
   is_valid = True
   if not username:
     flash('사용자 명은 필수입니다.')
     is_valid = False
-  
+
+  #사용자의 입력 체크
   if not email:
     flash('메일 주소는 필수입니다.')
     is_valid = False
-    try:
-      validate_email(email)
-    except EmailNotValidError:
-      flash('메일 주소 형식으로 입력해주세요.')
-    is_valid = False
 
+  #메일 주소 검증 체크
+  try: 
+    validate_email(email)
+  except EmailNotValidError:
+    flash('메일 주소 형식으로 입력해주세요. 예시) abc@abc.com')
+    is_valid = False
+  #사용자의 입력 체크
   if not description:
     flash('문의 내용은 필수입니다.')
     is_valid=False
 
+  #사용자의 입력 체크 중 하나라도 통과못하면 false => 최초 페이지로 redirection
   if not is_valid:
     return redirect(url_for('contact'))
   
-  flash('문의내용이 정상적으로 전달되었습니다. 문의해주셔서 감사합니다.')
+  #위의 모든 사항이 문제가 없다면 complete로 엔드포인트 설정
   return redirect(url_for('complete' ))
 
 
 @app.route('/complete', methods=['POST', 'GET'])
 def complete():
-  if not session.get('description') or not session.get('username') or not session.get('email'):
-    return redirect('contact')
   description = session.get('description', '') #세션에 저장한 값 가지고 오기
 
-  if not description:
-    return redirect(url_for('contact'))
-  session.pop('description', None)
+  #유효성 검증 => session에 저장된 값이 없다면 처음페이지로 redirection
+  if not session.get('description') or not session.get('username') or not session.get('email'):
+    return redirect('contact')
+  
+  flash('문의내용이 정상적으로 전달되었습니다. 문의해주셔서 감사합니다.')
+  
+  #세션 저장정보 삭제
+  session.pop('description', None) 
   return render_template('contact_complete.html', description = description)
 
 

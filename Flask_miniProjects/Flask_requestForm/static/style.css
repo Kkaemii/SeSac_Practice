@@ -1,12 +1,18 @@
-body{
+body {
   background-color: aquamarine;
 }
 
-h2{
+h2 {
   margin-top: 40px;
 }
 
-span{
+span {
   background-color: white;
   font-size: 20px;
+}
+
+div {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: bold;
 }
