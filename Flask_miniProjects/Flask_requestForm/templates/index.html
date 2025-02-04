@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문의폼</title>
+</head>
+<body>
+  <h2>문의 폼</h2><br>
+  <form action="{{url_for('contact_save')}}", method="POST">
+    <table>
+    <tr>
+      <td>사용자 명 </td> 
+      <td>
+        <input type="text" name="username" value="{{username}}", placeholder="사용자명", required>
+      </td>
+  </tr>
+  <tr>
+    <td>메일주소 </td> 
+    <td>
+      <input type="text" name="email" value="{{email}}", placeholder="문의내용", required>
+    </td>
+</tr>
+<tr>
+  <td>문의내용 </td> 
+  <td>
+    <textarea name="description" placeholder="문의내용", required minlength="10">{{description}}</textarea>
+  </td>
+</tr>
+  </table>
+  <input type="submit" value="문의" method="GET">
+  </form>
+</body>
+</html>
