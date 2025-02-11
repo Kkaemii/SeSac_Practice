@@ -1,5 +1,6 @@
 *.zip
 Mini_Project/Project_3_서울시음식점현황/서울특별시_일반음식점.csv
+Mini_Project/Project_3/서울특별시_일반음식점.csv
 *.env
 */.vscode
 *.dump
