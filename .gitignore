@@ -4,3 +4,8 @@ Mini_Project/Project_3/서울특별시_일반음식점.csv
 *.env
 */.vscode
 *.dump
+DB_proc/pJ1.mwb.bak
+*.mwb
+Statistics_proc/scores_em.csv
+Statistics_proc/sport_test.csv
+DB_proc/pJ1.mwb
